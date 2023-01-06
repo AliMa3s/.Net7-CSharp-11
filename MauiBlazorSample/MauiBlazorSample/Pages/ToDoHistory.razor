@@ -1,0 +1,17 @@
+﻿@page "/todohistory"
+
+<h3>To Do History</h3>
+
+<div>
+    <QuickGrid Items="@FilteredItems" ResizableColumns="true" Pagination="@pagination">
+        <PropertyColumn Property="@(t => t.Title)" IsDefaultSort="SortDirection.Ascending" Title="Item" Sortable="true">
+            <ColumnOptions>
+                <input type="search" autofocus @bind="titleFilter" @bind:event="oninput" placeholder="Enter title to search" />
+            </ColumnOptions>
+        </PropertyColumn>
+        <PropertyColumn Property="@(t => t.Description)" Title="Description" Sortable="true" />
+        <PropertyColumn Property="@(t => t.DateCompleted)" Title="Date Completed" Sortable="true" />
+        <PropertyColumn Property="@(t => t.Completed)" Title="Completed?" Align="Align.Right" />
+    </QuickGrid>
+    <Paginator Value="@pagination" />
+</div>
