@@ -1,0 +1,29 @@
+﻿@page "/searchtodos"
+
+<h3>Search Your To Dos</h3>
+
+<input @bind="searchText" @bind:after="PerformSearch" />
+
+
+@if (Loading)
+{
+    <p>Loading...</p>
+
+}
+else
+{
+    if (FilteredItems.Count == 0)
+    {
+        <p>Enter a value to search your list of todos.</p>
+    }
+    else
+    {
+        <ul>
+            @foreach (var todoItem in FilteredItems)
+            {
+                <ToDoItemComponent ToDoItem="@todoItem"></ToDoItemComponent>
+            }
+        </ul>
+    }
+
+}
